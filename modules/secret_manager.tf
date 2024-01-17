@@ -1,9 +1,11 @@
 resource "google_secret_manager_secret" "secret_hasura_graphql_admin_secret" {
   secret_id = "HASURA_GRAPHQL_ADMIN_SECRET"
   replication {
-    automatic = true
+    auto {}
   }
 }
+
+// https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/version_5_upgrade#replicationautomatic-is-now-removed
 
 resource "google_secret_manager_secret_version" "secret_hasura_graphql_admin_secret" {
   secret      = google_secret_manager_secret.secret_hasura_graphql_admin_secret.name
