@@ -23,3 +23,9 @@ gcloud auth configure-docker asia-northeast1-docker.pkg.dev
 ```
 
 参考. https://cloud.google.com/sdk/gcloud/reference/auth/configure-docker
+
+Terraform Cloud を用いて環境変数を登録する方法について
+
+参考.
+https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#using-terraform-cloud
+
