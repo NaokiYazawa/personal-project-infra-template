@@ -65,6 +65,11 @@ resource "google_cloud_run_service" "hasura" {
           name  = "HASURA_GRAPHQL_EXPERIMENTAL_FEATURES"
           value = "naming_convention"
         }
+
+        env {
+          name  = "HOSTNAME"
+          value = "0.0.0.0"
+        }
       }
     }
   }
