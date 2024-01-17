@@ -1,6 +1,6 @@
 resource "google_service_account" "hasura_service_account" {
   account_id   = "hasura"
-  display_name = "HasuraのCloud Run実行用"
+  display_name = "Hasura の Cloud Run 実行用"
 }
 
 # See: https://stackoverflow.com/questions/67863863/terraform-gcp-assign-iam-roles-to-service-account
