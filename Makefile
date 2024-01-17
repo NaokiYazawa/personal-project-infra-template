@@ -1,6 +1,6 @@
-GCP_PROJECT_ID := ""
+GCP_PROJECT_ID := "farstep-411520"
 REGISTRY_NAME := docker
-HASURA_VERSION := v2.16.0
+HASURA_VERSION := v2.36.2
 
 .PHONY: init
 init:
@@ -32,8 +32,7 @@ create_service_account:
 	gcloud iam service-accounts create terraform --display-name="terraform"
 	gcloud projects add-iam-policy-binding $(GCP_PROJECT_ID) \
 		--member serviceAccount:"terraform@$(GCP_PROJECT_ID).iam.gserviceaccount.com" \
-		--role "roles/owner" \
-		--no-user-output-enable
+		--role "roles/owner"
 
 # Hasuraのイメージを格納するartifact registryを作成
 .PHONY: create_artifact_registry
