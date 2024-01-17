@@ -50,6 +50,6 @@ create_secret_manager:
 # Hasuraのイメージをartifact registryにpush
 .PHONY: push_hasura_image
 push_hasura_image:
-	docker pull hasura/graphql-engine:$(HASURA_VERSION)
+	docker pull --platform=linux/amd64 hasura/graphql-engine:$(HASURA_VERSION)
 	docker tag hasura/graphql-engine:$(HASURA_VERSION) asia-northeast1-docker.pkg.dev/$(GCP_PROJECT_ID)/$(REGISTRY_NAME)/hasura:latest
 	docker push asia-northeast1-docker.pkg.dev/$(GCP_PROJECT_ID)/$(REGISTRY_NAME)/hasura:latest
