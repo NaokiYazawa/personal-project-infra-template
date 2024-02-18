@@ -36,3 +36,12 @@ resource "google_identity_platform_project_default_config" "default" {
     google_identity_platform_config.default
   ]
 }
+
+resource "google_firebase_web_app" "default" {
+  provider        = google-beta
+  project         = var.project_id
+  display_name    = "task_app"
+  deletion_policy = "DELETE"
+
+  depends_on = [google_firebase_project.default]
+}
