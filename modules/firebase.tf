@@ -15,28 +15,6 @@ resource "google_project_service" "default" {
   disable_on_destroy = false
 }
 
-resource "google_identity_platform_config" "default" {
-  provider = google-beta
-  project  = var.project_id
-}
-
-resource "google_identity_platform_project_default_config" "default" {
-  provider = google-beta
-  project  = var.project_id
-  sign_in {
-    allow_duplicate_emails = false
-
-    email {
-      enabled           = true
-      password_required = true
-    }
-  }
-
-  depends_on = [
-    google_identity_platform_config.default
-  ]
-}
-
 resource "google_firebase_web_app" "default" {
   provider        = google-beta
   project         = var.project_id
