@@ -18,6 +18,14 @@ resource "random_password" "hasura_admin_secret" {
   override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
-data "google_secret_manager_secret" "secret_hasura_graphql_database_url" {
-  secret_id = "HASURA_GRAPHQL_DATABASE_URL"
+data "google_secret_manager_secret" "secret_hasura_graphql_metadata_database_url" {
+  secret_id = "HASURA_GRAPHQL_METADATA_DATABASE_URL"
+}
+
+data "google_secret_manager_secret" "secret_pg_database_url" {
+  secret_id = "PG_DATABASE_URL"
+}
+
+data "google_secret_manager_secret" "secret_hasura_graphql_jwt_secret" {
+  secret_id = "HASURA_GRAPHQL_JWT_SECRET"
 }

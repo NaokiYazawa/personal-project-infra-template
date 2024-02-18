@@ -32,10 +32,30 @@ resource "google_cloud_run_service" "hasura" {
         }
 
         env {
-          name = "HASURA_GRAPHQL_DATABASE_URL"
+          name = "HASURA_GRAPHQL_METADATA_DATABASE_URL"
           value_from {
             secret_key_ref {
-              name = data.google_secret_manager_secret.secret_hasura_graphql_database_url.secret_id
+              name = data.google_secret_manager_secret.secret_hasura_graphql_metadata_database_url.secret_id
+              key  = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "PG_DATABASE_URL"
+          value_from {
+            secret_key_ref {
+              name = data.google_secret_manager_secret.secret_pg_database_url.secret_id
+              key  = "latest"
+            }
+          }
+        }
+
+        env {
+          name = "HASURA_GRAPHQL_JWT_SECRET"
+          value_from {
+            secret_key_ref {
+              name = data.google_secret_manager_secret.secret_hasura_graphql_jwt_secret.secret_id
               key  = "latest"
             }
           }
@@ -58,12 +78,7 @@ resource "google_cloud_run_service" "hasura" {
 
         env {
           name  = "HASURA_GRAPHQL_UNAUTHORIZED_ROLE"
-          value = "anyone"
-        }
-
-        env {
-          name  = "HASURA_GRAPHQL_EXPERIMENTAL_FEATURES"
-          value = "naming_convention"
+          value = "anonymous"
         }
       }
     }
