@@ -80,6 +80,11 @@ resource "google_cloud_run_service" "hasura" {
           name  = "HASURA_GRAPHQL_UNAUTHORIZED_ROLE"
           value = "anonymous"
         }
+
+        env {
+          name  = "HOST"
+          value = "0.0.0.0"
+        }
       }
     }
   }
